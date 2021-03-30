@@ -1,0 +1,242 @@
+
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-mattBlackLight fixed-top">
+        <button class="navbar-toggler sideMenuToggler" type="button">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <a class="navbar-brand" href="/admin/">Admin Panel</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item dropdown">
+                    <div>
+
+                        <a href="/logout"> <span class="text">Logout</span></a>
+                    </div>
+
+
+
+
+
+                </li>
+            </ul>
+        </div>
+    </nav>
+    <div class="wrapper d-flex">
+        <div class="sideMenu bg-mattBlackLight">
+             <div class="sidebar">
+        <ul class="navbar-nav">
+          <li class="nav-item">
+            <a href="/admin" class="nav-link px-2">
+              <i class="material-icons icon">
+                dashboard
+              </i>
+              <span class="text">Dashboard</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="/admin/user-management" class="nav-link px-2">
+              <i class="material-icons icon">
+                person
+              </i>
+              <span class="text">User Management</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="/admin/product-management" class="nav-link px-2">
+              <i class="material-icons icon"> insert_chart </i><span class="text">Product Management</span></a>
+          </li>
+          <li class="nav-item">
+            <a href="/admin/category-management" class="nav-link px-2">
+              <i class="material-icons icon"> book </i><span class="text">Category
+                Management</span></a>
+          </li>
+          <li class="nav-item">
+          <li class="nav-item">
+            <a href="/admin/get-all-orders" class="nav-link px-2">
+              <i class="material-icons icon">
+                pages
+              </i>
+              <span class="text">All Orders</span>
+            </a>
+          </li>
+          <a href="#" class="nav-link px-2">
+            <i class="material-icons icon">
+              settings
+            </i>
+            <span class="text">Settings</span>
+          </a>
+          </li>
+
+          <li class="nav-item">
+            <a href="/admin/report" class="nav-link px-2">
+              <i class="material-icons icon">
+                account_balance
+              </i>
+              <span class="text">Reports</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="/admin/coupon" class="nav-link px-2">
+              <i class="material-icons icon">
+                local_offer
+              </i>
+              <span class="text">Coupon</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="/admin/offer" class="nav-link px-2">
+              <i class="material-icons icon">
+                card_giftcard
+              </i>
+              <span class="text">Offer</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="#" class="nav-link px-2 sideMenuToggler">
+              <i class="material-icons icon expandView ">
+                view_list
+              </i>
+              <span class="text">Resize</span>
+            </a>
+          </li>
+        </ul>
+      </div>
+        </div>
+        <div class="content">
+            <main>
+
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-md-6 m-auto">
+                            <div class="bg-mattBlackLight my-2 p-3">
+                                <h2 style="color: aliceblue;" class="text-center">Add Product</h2>
+                            </div>
+                        </div>
+                        <div class="container-fluid">
+                            <div class="row">
+                                <div class="col-md-6 m-auto">
+                                    <div class="bg-mattBlackLight my-2 p-3">
+                                        <form action="/admin/add-product" method="POST" enctype="multipart/form-data">
+                                            <div class="form-group">
+                                                <label for="exampleInputEmail1">Name</label>
+                                                <input type="text" class="form-control" id="exampleInputEmail1"
+                                                    aria-describedby="emailHelp" placeholder="Enter Product Name" required name="productName">
+
+                                            </div>
+                                            
+                                            <div class="form-group">
+                                                <label for="sel1">Category</label>
+                                                <select class="form-control" id="sel1" name="productCategory">
+                                                    <option>Male</option>
+                                                    <option>Female</option>
+                                                    
+                                                </select>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="sel1">Sub Category</label>
+                                                <select class="form-control" id="sel1" name="productSubCat">
+                                                    {{#each category}}
+                                                    <option>{{this.productSubCat}}</option>
+                                                   
+                                                    {{/each}}
+                                                </select>
+                                                
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="exampleInputPassword1">Price</label>
+                                                <input type="number" class="form-control" id="exampleInputPassword1"
+                                                    placeholder="Price" required name="productPrice">
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="exampleInputPassword1">Qty</label>
+                                                <input type="number" class="form-control" id="exampleInputPassword1"
+                                                    placeholder="Quantity" required name="productQty">
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="exampleInputPassword1">Description</label>
+                                                <input type="text" class="form-control" id="exampleInputPassword1"
+                                                    placeholder="Description" required name="productDes">
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="exampleInputPassword1">Image</label>
+                                                 <div class="form-group">
+                                                    <img src="" alt=""
+                                                        style="width: 100px; height: 100px; display: none;" id="imgView">
+
+                                                </div>
+                                                <input type="file" accept="image/x-png,image/gif,image/jpeg" class="form-control" id="image"
+                                                  required name="Image" onchange="viewImage(event)" >
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="exampleInputPassword1">Second Image</label>
+                                                 <div class="form-group">
+                                                    <img src="" alt=""
+                                                        style="width: 100px; height: 100px; display: none;" id="imgView1">
+
+                                                </div>
+                                                <input type="file" accept="image/x-png,image/gif,image/jpeg" class="form-control" id="image1"
+                                                  required name="Image0" onchange="viewImage1(event)" >
+                                            </div>
+                                            <div>
+
+                                            <h5 style="color: red; display:none;" id="image-warning">Please upload only images</h5>
+                                            <button type="submit" class="btn btn-primary" id="add-product-button">Add Product</button>
+                                            </div>
+                                        </form>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
+                    </div>
+                </div>
+            </main>
+        </div>
+    </div>
+   
+</body>
+
+<script>
+    function viewImage(event){
+        document.getElementById('imgView').src=URL.createObjectURL(event.target.files[0])
+        let file=event.target.files[0].name
+        
+        let filename=file.split('.').pop()
+        if(filename=='jpeg' || filename =='png' || filename=='jpg'){
+            $('#add-product-button').show()
+            $('#image-warning').hide()
+            $('#imgView').show()
+        }else{
+            $('#image-warning').show()
+            $('#add-product-button').hide()
+            $('#imgView').hide()
+        }
+    }
+
+    function viewImage1(event){
+      document.getElementById('imgView1').src=URL.createObjectURL(event.target.files[0])
+        console.log('2nd image',event.target.files[0])
+        let file=event.target.files[0].name
+        let filename=file.split('.').pop()
+        if(filename=='jpeg' || filename =='png' || filename=='jpg'){
+           $('#add-product-button').show()
+            $('#image-warning').hide()
+              $('#imgView1').show()
+        }else{
+          $('#image-warning').show()
+            $('#add-product-button').hide()
+            $('#imgView1').hide()
+        }
+    }
+
+
+</script>
